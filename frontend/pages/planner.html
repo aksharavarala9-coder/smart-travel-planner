@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Trip | Smart Travel Planner</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <h2 class="nav-brand" style="margin-bottom: 2rem;">Smart Travel</h2>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+                <a href="planner.html" class="sidebar-link active">Plan New Trip</a>
+                <a href="expenses.html" class="sidebar-link">Manage Expenses</a>
+            </nav>
+            <div style="margin-top: auto;">
+                <div id="user-info" style="margin-bottom: 1rem; font-weight: 500;"></div>
+                <button onclick="Auth.logout()" class="btn btn-secondary btn-block">Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-content">
+            <h1 style="margin-bottom: 2rem;">Plan Your Dream Trip</h1>
+            <div id="alert-container"></div>
+
+            <div class="grid-2">
+                <!-- Trip Form -->
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;">Trip Details</h3>
+                    <form id="planner-form">
+                        <div class="form-group">
+                            <label class="form-label" for="destination">Destination</label>
+                            <input type="text" id="destination" class="form-control" required placeholder="e.g., Paris, France">
+                        </div>
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label" for="days">Duration (Days)</label>
+                                <input type="number" id="days" class="form-control" required min="1" max="30" placeholder="e.g., 5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="budget">Total Budget ($)</label>
+                                <input type="number" id="budget" class="form-control" required min="100" placeholder="e.g., 2000">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Generate Itinerary & Visualize Map</button>
+                    </form>
+                </div>
+
+                <!-- Leaflet Map Integration -->
+                <div class="card" style="padding: 1rem;">
+                    <h3 style="margin-bottom: 1rem; padding-left: 1rem;">Map Preview</h3>
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <!-- Generated Itinerary -->
+            <div id="itinerary-container" style="margin-top: 2rem; display: none;">
+                <h2 style="margin-bottom: 1.5rem;">Your Smart Itinerary</h2>
+                <div id="itinerary-content" class="grid-3"></div>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+                    <a href="expenses.html" class="btn btn-primary" id="manage-expenses-btn" style="display: none;">Manage Expenses for this Trip</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/planner.js"></script>
+</body>
+</html>

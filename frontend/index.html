@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Travel Planner - Plan trips, split expenses, and explore.">
+    <title>Smart Travel Planner | Plan Your Dream Trip</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="gradient-bg">
+    <div class="container">
+        <nav class="navbar glass-card" style="padding: 1rem 2rem; margin-top: 1rem;">
+            <div class="nav-brand text-white">Smart Travel Planner</div>
+            <div class="nav-links">
+                <a href="pages/login.html" class="btn btn-secondary">Login</a>
+                <a href="pages/register.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+
+        <header style="padding: 8rem 0; text-align: center;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Plan Trips. Split Costs. Explore More.</h1>
+            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem auto; opacity: 0.9;">
+                The all-in-one platform to orchestrate your vacations with smart itineraries, interactive maps, and group expense splitting.
+            </p>
+            <a href="pages/register.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Start Planning Free</a>
+        </header>
+
+        <section class="grid-3" style="padding-bottom: 5rem;">
+            <div class="card glass-card">
+                <h3>Smart Itineraries</h3>
+                <p style="margin-top: 1rem; opacity: 0.8;">Instantly generate day-by-day itineraries based on your interests and budget.</p>
+            </div>
+            <div class="card glass-card">
+                <h3>Interactive Maps</h3>
+                <p style="margin-top: 1rem; opacity: 0.8;">Visualize your entire journey and explore nearby attractions.</p>
+            </div>
+            <div class="card glass-card">
+                <h3>Expense Splitting</h3>
+                <p style="margin-top: 1rem; opacity: 0.8;">Easily track who paid for what and instantly calculate group balances.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Redirect to dashboard if already logged in
+        if (Auth.isAuthenticated()) {
+            window.location.href = 'pages/dashboard.html';
+        }
+    </script>
+</body>
+</html>
