@@ -26,30 +26,58 @@ document.addEventListener('DOMContentLoaded', () => {
             const destination = document.getElementById('destination').value;
             const days = document.getElementById('days').value;
             const budget = document.getElementById('budget').value;
+            const travelType = document.getElementById('travelType') ? document.getElementById('travelType').value : 'family';
             const submitBtn = plannerForm.querySelector('button[type="submit"]');
 
             try {
-                submitBtn.textContent = 'Generating...';
+                submitBtn.textContent = 'Generating AI Plan...';
                 submitBtn.disabled = true;
 
                 const response = await apiCall('/trips', {
                     method: 'POST',
-                    body: JSON.stringify({ destination, days: parseInt(days), budget: parseFloat(budget) })
+                    body: JSON.stringify({ destination, days: parseInt(days), budget: parseFloat(budget), travelType })
                 });
 
                 showAlert('Trip successfully created and itinerary generated!', 'success');
                 displayItinerary(response.data);
                 
-                // Simple geocoding using Nominatim (OpenStreetMap) to pan the map
+                // Advanced map visualization (simulated AI route points)
                 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(destination)}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data && data.length > 0) {
-                            const lat = data[0].lat;
-                            const lon = data[0].lon;
-                            map.setView([lat, lon], 12);
-                            L.marker([lat, lon]).addTo(map)
-                                .bindPopup(`<b>${destination}</b><br>Trip Location`)
+                            const centerLat = parseFloat(data[0].lat);
+                            const centerLon = parseFloat(data[0].lon);
+                            
+                            // Clear existing layers if any
+                            map.eachLayer((layer) => {
+                                if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+                                    map.removeLayer(layer);
+                                }
+                            });
+                            
+                            map.setView([centerLat, centerLon], 12);
+                            
+                            // Generate mock route points around the center
+                            const routePoints = [];
+                            routePoints.push([centerLat, centerLon]); // Start at center
+                            
+                            for(let i=0; i<Math.min(response.data.itinerary.length, 5); i++) {
+                                // Add random jitter to create a fake route
+                                const jLat = centerLat + (Math.random() - 0.5) * 0.05;
+                                const jLon = centerLon + (Math.random() - 0.5) * 0.05;
+                                routePoints.push([jLat, jLon]);
+                                
+                                L.marker([jLat, jLon]).addTo(map)
+                                    .bindPopup(`<b>Day ${i+1} Spot</b><br>Suggested by AI`);
+                            }
+                            
+                            // Draw connecting route
+                            L.polyline(routePoints, {color: '#FF9933', weight: 4, opacity: 0.7, dashArray: '10, 10'}).addTo(map);
+                            
+                            // Main destination marker
+                            L.marker([centerLat, centerLon]).addTo(map)
+                                .bindPopup(`<b>${destination}</b><br>Base Location`)
                                 .openPopup();
                         }
                     });

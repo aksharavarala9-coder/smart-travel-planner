@@ -18,6 +18,11 @@ const TripSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Please specify a budget']
     },
+    travelType: {
+        type: String,
+        enum: ['solo', 'family', 'friends', 'couple'],
+        default: 'family'
+    },
     itinerary: {
         type: Array,
         default: []

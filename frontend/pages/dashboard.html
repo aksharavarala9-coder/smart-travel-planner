@@ -37,6 +37,33 @@
 
             <div id="alert-container"></div>
 
+            <!-- Geolocation & Context -->
+            <div class="grid-2" style="margin-bottom: 2rem;">
+                <!-- Weather & Location -->
+                <div class="card glass-card" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white;">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <h3 style="margin-bottom: 0.5rem; color: white;">Location & Weather</h3>
+                            <p id="current-location" style="font-size: 1.1rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem;">
+                                📍 Detecting...
+                            </p>
+                        </div>
+                        <div id="weather-info" style="text-align: right;">
+                            <div style="font-size: 2rem;">☀️</div>
+                            <div style="font-size: 0.9rem;">Gathering Info...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trips Near You -->
+                <div class="card">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--primary);">Trips Near You</h3>
+                    <ul id="nearby-trips" style="color: var(--text-muted); font-size: 0.95rem;">
+                        <li style="margin-bottom: 0.5rem; color: var(--text-muted);">Please allow location access to see recommendations.</li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- Dashboard Analytics -->
             <div class="grid-2" style="margin-bottom: 3rem;">
                 <div class="card">

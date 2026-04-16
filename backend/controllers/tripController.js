@@ -7,29 +7,55 @@ exports.createTrip = async (req, res) => {
     try {
         req.body.user = req.user.id;
         
-        // India Predefined Hotspots Logic
-        const { destination, days } = req.body;
+        // Mock AI Itinerary Generator 
+        const { destination, days, budget, travelType } = req.body;
         
-        const indiaHotspots = {
-            'Hyderabad': ['Charminar', 'Golconda Fort', 'Ramoji Film City', 'Hussain Sagar Lake'],
-            'Goa': ['Baga Beach', 'Dudhsagar Waterfalls', 'Fort Aguada', 'Basilica of Bom Jesus'],
-            'Manali': ['Rohtang Pass', 'Solang Valley', 'Hadimba Temple', 'Mall Road'],
-            'Delhi': ['Red Fort', 'India Gate', 'Qutub Minar', 'Lotus Temple'],
-            'Jaipur': ['Hawa Mahal', 'Amer Fort', 'City Palace', 'Jantar Mantar']
-        };
-
-        const spots = indiaHotspots[destination] || ['Top local market', 'Cultural center', 'Scenic viewpoint', 'Historic monument'];
-        
-        // Distribute spots across days
         let generatedItinerary = [];
+        
+        // Define some realistic-sounding activity templates for variety
+        const morningActivities = [
+            `Visit the iconic landmarks of ${destination}`,
+            `Early morning nature walk or hike in ${destination}`,
+            `Explore the historic old town streets of ${destination}`,
+            `Visit a local museum or cultural exhibition`,
+            `Enjoy a traditional local breakfast and a guided city tour`
+        ];
+        
+        const afternoonActivities = [
+            `Have authentic lunch and explore local artisan markets`,
+            `Visit a popular shopping district in ${destination}`,
+            `Relaxing afternoon at a scenic spot in ${destination}`,
+            `Interactive local workshop or cooking class`,
+            `Visit nearby tourist attractions and hot spots`
+        ];
+        
+        const eveningActivities = [
+            `Enjoy dinner at a highly-rated local restaurant`,
+            `Experience the vibrant nightlife of ${destination}`,
+            `Catch a local cultural performance or show`,
+            `Evening stroll and street food tasting`,
+            `Relax at a premium cafe/lounge to end the day`
+        ];
+
         for (let i = 1; i <= days; i++) {
-            const spot = spots[(i - 1) % spots.length];
+            // Pick a random or pseudo-random activity based on indices
+            const morning = morningActivities[(i + destination.length) % morningActivities.length];
+            const afternoon = afternoonActivities[(i * 2) % afternoonActivities.length];
+            const evening = eveningActivities[(i + 3) % eveningActivities.length];
+            
+            // Adjust tone based on travel type
+            let modifier = '';
+            if (travelType === 'family') modifier = ' (Family-friendly)';
+            if (travelType === 'friends') modifier = ' (Group fun)';
+            if (travelType === 'solo') modifier = ' (Great for solo travelers)';
+            if (travelType === 'couple') modifier = ' (Romantic setting)';
+
             generatedItinerary.push({
                 day: i,
                 activities: [
-                    `Morning: Visit ${spot}`,
-                    `Afternoon: Authentic local cuisine lunch near ${spot}`,
-                    `Evening: Explore local markets and relax`
+                    `Morning: ${morning}${modifier}`,
+                    `Afternoon: ${afternoon}${modifier}`,
+                    `Evening: ${evening}${modifier}`
                 ]
             });
         }

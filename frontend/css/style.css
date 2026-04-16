@@ -24,6 +24,28 @@
     --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Dark Theme Palette */
+body.dark-theme {
+    --bg-light: #111827;
+    --surface: #1F2937;
+    --text-main: #F9FAFB;
+    --text-muted: #9CA3AF;
+    --border: #374151;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s var(--transition-smooth) forwards;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -41,6 +63,7 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+    transition: color var(--transition-fast);
 }
 
 ul {

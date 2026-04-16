@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     await loadTripsAndCharts();
+    initGeolocation();
 });
 
 async function loadTripsAndCharts() {
@@ -110,4 +111,56 @@ function generateCharts(trips) {
 function viewTrip(tripId) {
     localStorage.setItem('activeTripId', tripId);
     window.location.href = 'expenses.html';
+}
+
+function initGeolocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            async position => {
+                const { latitude, longitude } = position.coords;
+                // Reverse geocode using Nominatim
+                try {
+                    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+                    const data = await res.json();
+                    
+                    const city = data.address.city || data.address.town || data.address.village || data.address.county || 'Unknown Location';
+                    document.getElementById('current-location').innerHTML = `📍 ${city}, India`;
+                    
+                    // Mock weather
+                    document.getElementById('weather-info').innerHTML = `
+                        <div style="font-size: 2rem;">⛅</div>
+                        <div style="font-size: 0.9rem;">28°C, Partly Cloudy</div>
+                    `;
+
+                    // Generate nearby trips
+                    generateNearbyTrips(city);
+
+                } catch (error) {
+                    document.getElementById('current-location').innerHTML = `📍 Location found, exact town unavailable`;
+                }
+            },
+            () => {
+                document.getElementById('current-location').innerHTML = `📍 Location access denied`;
+            }
+        );
+    }
+}
+
+function generateNearbyTrips(city) {
+    const list = document.getElementById('nearby-trips');
+    // Provide some context aware suggestions based on Indian geography
+    let suggestions = [];
+    if (city.includes('Hyderabad') || city.includes('Telangana') || city.includes('Andhra')) {
+        suggestions = ['Warangal Fort (Weekend getaway)', 'Nagarjuna Sagar (1-day trip)', 'Srisailam (Spiritual trip)'];
+    } else if (city.includes('Mumbai') || city.includes('Maharashtra')) {
+        suggestions = ['Lonavala (Scenic)', 'Mahabaleshwar (Hills)', 'Alibaug (Beaches)'];
+    } else if (city.includes('Delhi') || city.includes('Haryana') || city.includes('UP')) {
+        suggestions = ['Agra (Taj Mahal)', 'Jaipur (Pink City)', 'Rishikesh (Adventure)'];
+    } else if (city.includes('Bangalore') || city.includes('Karnataka')) {
+        suggestions = ['Mysore (Heritage)', 'Coorg (Coffee Estates)', 'Ooty (Hills)'];
+    } else {
+        suggestions = ['Local heritage walk', 'Main City Museum', 'Nature reserve exploration'];
+    }
+
+    list.innerHTML = suggestions.map(s => `<li style="margin-bottom: 0.5rem;">🗺️ ${s}</li>`).join('');
 }
