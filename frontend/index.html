@@ -3,50 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Smart Travel Planner - Plan trips, split expenses, and explore.">
-    <title>Smart Travel Planner | Plan Your Dream Trip</title>
+    <title>Smart Travel Planner India | Incredible India</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
 </head>
-<body class="gradient-bg">
-    <div class="container">
-        <nav class="navbar glass-card" style="padding: 1rem 2rem; margin-top: 1rem;">
-            <div class="nav-brand text-white">Smart Travel Planner</div>
+<body>
+    <!-- HERO SECTION -->
+    <div class="hero-bg" style="min-height: 100vh; display: flex; flex-direction: column;">
+        <nav class="navbar container" style="align-items: center; padding-top: 2rem;">
+            <div class="nav-brand" style="color: white; text-shadow: var(--shadow-text); font-size: 1.8rem;">
+                🏛️ SmartIndia
+            </div>
             <div class="nav-links">
-                <a href="pages/login.html" class="btn btn-secondary">Login</a>
-                <a href="pages/register.html" class="btn btn-primary">Sign Up</a>
+                <a href="#destinations" class="nav-link" style="color: white; font-weight: 500;">Destinations</a>
+                <a href="#guidelines" class="nav-link" style="color: white; font-weight: 500;">Guidelines</a>
+                <a href="pages/reviews.html" class="nav-link" style="color: white; font-weight: 500;">Reviews</a>
+                <a href="pages/login.html" class="btn btn-secondary" style="border-radius: 50px;">Log In</a>
+                <a href="pages/register.html" class="btn btn-primary" style="border-radius: 50px;">Sign Up</a>
             </div>
         </nav>
 
-        <header style="padding: 8rem 0; text-align: center;">
-            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Plan Trips. Split Costs. Explore More.</h1>
-            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem auto; opacity: 0.9;">
-                The all-in-one platform to orchestrate your vacations with smart itineraries, interactive maps, and group expense splitting.
+        <header class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: center; padding-bottom: 5rem;">
+            <h1 style="text-shadow: var(--shadow-text); margin-bottom: 1.5rem; font-size: 4rem;">Explore Incredible India.</h1>
+            <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem auto; text-shadow: var(--shadow-text); font-weight: 300;">
+                From the majestic Himalayas to the serene backwaters of Kerala. Plan your entire journey, discover top-rated spots, split expenses with friends, and share your experiences.
             </p>
-            <a href="pages/register.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Start Planning Free</a>
+            <div>
+                <a href="pages/planner.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem; margin-right: 1rem; border-radius: 50px;">Plan Your Trip Now</a>
+                <a href="#destinations" class="btn" style="background: rgba(255,255,255,0.2); color: white; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.4); font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 50px;">Explore Destinations</a>
+            </div>
         </header>
-
-        <section class="grid-3" style="padding-bottom: 5rem;">
-            <div class="card glass-card">
-                <h3>Smart Itineraries</h3>
-                <p style="margin-top: 1rem; opacity: 0.8;">Instantly generate day-by-day itineraries based on your interests and budget.</p>
-            </div>
-            <div class="card glass-card">
-                <h3>Interactive Maps</h3>
-                <p style="margin-top: 1rem; opacity: 0.8;">Visualize your entire journey and explore nearby attractions.</p>
-            </div>
-            <div class="card glass-card">
-                <h3>Expense Splitting</h3>
-                <p style="margin-top: 1rem; opacity: 0.8;">Easily track who paid for what and instantly calculate group balances.</p>
-            </div>
-        </section>
     </div>
+
+    <!-- FEATURED DESTINATIONS -->
+    <section id="destinations" class="container" style="padding: 6rem 20px;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 style="color: var(--primary);">Featured Indian Destinations</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 1.1rem;">Discover the most loved places rated by real travelers.</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&q=80&w=800" alt="Goa" class="destination-img">
+                <div class="destination-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0;">Goa</h3>
+                        <span class="star-rating">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">The land of pristine beaches, vibrant nightlife, and Portuguese heritage.</p>
+                    <a href="pages/planner.html" class="btn btn-secondary btn-block">Plan Trip</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1605649487212-4d4ce38d24b6?auto=format&fit=crop&q=80&w=800" alt="Jaipur" class="destination-img">
+                <div class="destination-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0;">Jaipur</h3>
+                        <span class="star-rating">⭐⭐⭐⭐½</span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">The Pink City, famous for its magnificent forts, palaces, and vibrant culture.</p>
+                    <a href="pages/planner.html" class="btn btn-secondary btn-block">Plan Trip</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1623141628173-10022a36b3db?auto=format&fit=crop&q=80&w=800" alt="Manali" class="destination-img">
+                <div class="destination-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0;">Manali</h3>
+                        <span class="star-rating">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">A tranquil Himalayan resort town known for its snow-capped mountains and adventures.</p>
+                    <a href="pages/planner.html" class="btn btn-secondary btn-block">Plan Trip</a>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1514222026857-410a56ba590c?auto=format&fit=crop&q=80&w=800" alt="Hyderabad" class="destination-img">
+                <div class="destination-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0;">Hyderabad</h3>
+                        <span class="star-rating">⭐⭐⭐⭐</span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">The City of Pearls. Experience the iconic Charminar and world-class Biryani.</p>
+                    <a href="pages/planner.html" class="btn btn-secondary btn-block">Plan Trip</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&q=80&w=800" alt="Delhi" class="destination-img">
+                <div class="destination-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0;">Delhi</h3>
+                        <span class="star-rating">⭐⭐⭐⭐</span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">A blend of historic monuments, bustling markets, and diverse street food.</p>
+                    <a href="pages/planner.html" class="btn btn-secondary btn-block">Plan Trip</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAVEL GUIDELINES -->
+    <section id="guidelines" style="background-color: var(--surface); padding: 5rem 0; border-top: 1px solid var(--border);">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 3rem; text-align: center;">Important Travel Guidelines</h2>
+            <div class="grid-3" style="text-align: left;">
+                <div style="padding: 1rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">🎒 Pack Smart</h3>
+                    <p style="color: var(--text-muted);">India's climate varies vastly. Always carry comfortable cottons for the plains, and heavy woolens if heading to the northern mountains.</p>
+                </div>
+                <div style="padding: 1rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">🚰 Stay Hydrated</h3>
+                    <p style="color: var(--text-muted);">Always drink bottled or filtered water while traveling. Be mindful of street food hygiene to prevent stomach upsets.</p>
+                </div>
+                <div style="padding: 1rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">🚆 Local Transit</h3>
+                    <p style="color: var(--text-muted);">Utilize metro systems, pre-paid taxis, or ride-hailing apps like Ola/Uber for efficient and secure intracity travel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT -->
+    <footer style="background-color: #111827; color: white; padding: 4rem 0 2rem 0;">
+        <div class="container grid-2" style="margin-bottom: 3rem;">
+            <div>
+                <h3 style="margin-bottom: 1rem;">Support & Contact</h3>
+                <p style="color: #9CA3AF; margin-bottom: 0.5rem;">Email: contact@smarttravelindia.com</p>
+                <p style="color: #9CA3AF; margin-bottom: 0.5rem;">Phone: +91 98765 43210</p>
+                <p style="color: #9CA3AF;">HQ: Connaught Place, New Delhi, India</p>
+            </div>
+            <div style="text-align: right;">
+                <h3 style="margin-bottom: 1rem;">Smart Travel Planner</h3>
+                <p style="color: #9CA3AF;">Your comprehensive guide to touring India.</p>
+            </div>
+        </div>
+        <div class="container" style="text-align: center; color: #6B7280; border-top: 1px solid #374151; padding-top: 2rem;">
+            &copy; 2026 Smart Travel India. All Rights Reserved.
+        </div>
+    </footer>
 
     <script src="js/app.js"></script>
     <script>
-        // Redirect to dashboard if already logged in
         if (Auth.isAuthenticated()) {
-            window.location.href = 'pages/dashboard.html';
+            // Modify navbar if logged in
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.innerHTML = `
+                <a href="#destinations" class="nav-link" style="color: white; font-weight: 500;">Destinations</a>
+                <a href="pages/reviews.html" class="nav-link" style="color: white; font-weight: 500;">Reviews</a>
+                <a href="pages/dashboard.html" class="btn btn-primary" style="border-radius: 50px;">Go to Dashboard</a>
+            `;
         }
     </script>
 </body>

@@ -7,20 +7,33 @@ exports.createTrip = async (req, res) => {
     try {
         req.body.user = req.user.id;
         
-        // Mock AI logic for itinerary generation
+        // India Predefined Hotspots Logic
         const { destination, days } = req.body;
-        let generatedItinerary = [];
         
+        const indiaHotspots = {
+            'Hyderabad': ['Charminar', 'Golconda Fort', 'Ramoji Film City', 'Hussain Sagar Lake'],
+            'Goa': ['Baga Beach', 'Dudhsagar Waterfalls', 'Fort Aguada', 'Basilica of Bom Jesus'],
+            'Manali': ['Rohtang Pass', 'Solang Valley', 'Hadimba Temple', 'Mall Road'],
+            'Delhi': ['Red Fort', 'India Gate', 'Qutub Minar', 'Lotus Temple'],
+            'Jaipur': ['Hawa Mahal', 'Amer Fort', 'City Palace', 'Jantar Mantar']
+        };
+
+        const spots = indiaHotspots[destination] || ['Top local market', 'Cultural center', 'Scenic viewpoint', 'Historic monument'];
+        
+        // Distribute spots across days
+        let generatedItinerary = [];
         for (let i = 1; i <= days; i++) {
+            const spot = spots[(i - 1) % spots.length];
             generatedItinerary.push({
                 day: i,
                 activities: [
-                    `Morning: Visit popular attractions in ${destination}`,
-                    `Afternoon: Local lunch and sightseeing`,
-                    `Evening: Relax at city center or dinner`
+                    `Morning: Visit ${spot}`,
+                    `Afternoon: Authentic local cuisine lunch near ${spot}`,
+                    `Evening: Explore local markets and relax`
                 ]
             });
         }
+        
         req.body.itinerary = generatedItinerary;
 
         const trip = await Trip.create(req.body);
